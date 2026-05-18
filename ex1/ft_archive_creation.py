@@ -24,16 +24,22 @@ def main() -> None:
         if file is not None:
             file.close()
             print(f"File {filename} closed")
+        else:
+            return
 
-    print("Transform data:")
-    print("---")
-    lines = text.split("\n")
-    new_text = ""
-    for line in lines:
-        new_line = line + "#"
-        print(new_line)
-        new_text = new_text + new_line + "\n"
-    print("---")
+    try:
+        print("Transform data:")
+        print("---")
+        lines = text.split("\n")
+        new_text = ""
+        for line in lines:
+            new_line = line + "#"
+            print(new_line)
+            new_text = new_text + new_line + "\n"
+        print("---")
+    except Exception as e:
+        print("Error transforming the text", e)
+        return
 
     out_file = None
     try:
