@@ -34,7 +34,6 @@ def main() -> None:
             file.close()
             print(f"File {filename} closed")
         else:
-            print("no file for reading, return")
             return
 
     try:
