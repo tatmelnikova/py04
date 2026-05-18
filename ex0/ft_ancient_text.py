@@ -10,15 +10,18 @@ def main() -> None:
         print("Usage: ft_ancient_text.py <file>")
         return
     filename = argv[1]
+    file = None
     try:
         file = open(filename)
         print("---")
         print(file.read())
         print("---")
-        file.close()
-        print(f"File {filename} closed")
     except Exception as e:
         print(f"Error opening file '{filename}':", e)
+    finally:
+        if file is not None:
+            file.close()
+            print(f"File {filename} closed")
 
 
 if __name__ == "__main__":
