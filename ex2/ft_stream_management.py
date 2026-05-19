@@ -21,6 +21,7 @@ def main() -> None:
     filename = argv[1]
 
     file = None
+    text = None
     try:
         file = open(filename)
         print("---")
@@ -36,24 +37,27 @@ def main() -> None:
         else:
             return
 
+    new_text = None
     try:
         print("Transform data:")
         print("---")
-        lines = text.split("\n")
-        new_text = ""
-        for line in lines:
-            new_line = line + "#"
-            print(new_line)
-            new_text = new_text + new_line + "\n"
+        if text is not None:
+            lines = text.split("\n")
+            new_text = ""
+            for line in lines:
+                new_line = line + "#"
+                print(new_line)
+                new_text = new_text + new_line + "\n"
         print("---")
     except Exception as e:
         print("[STDERR] Error transforming the text", e, file=sys.stderr)
         return
 
     output_file = None
+    out_name = None
     try:
         out_name = get_filename()
-        if out_name:
+        if out_name and new_text is not None:
             print(f"Saving data to '{out_name}'")
             output_file = open(out_name, "w+")
             output_file.write(new_text)

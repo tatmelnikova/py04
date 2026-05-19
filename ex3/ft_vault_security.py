@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 def secure_archive(filename: str,
                    mode: int = 1, text: str = "") -> tuple[bool, str]:
     if mode == 1:
@@ -21,7 +22,7 @@ def main() -> None:
     print(secure_archive("1.txt"))
     print()
     print("Using 'secure_archive' to read from an inaccessible file:")
-    print(secure_archive("/etc/master.passwd"))
+    print(secure_archive("test1.txt"))
     print()
     print("Using 'secure_archive' to read from a regular file:")
     result = secure_archive("test.txt")
